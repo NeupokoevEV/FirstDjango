@@ -30,14 +30,19 @@ def home(request):
 
 
 def about(request):
-    result = f"""
-Имя: <b>{author["name"]}</b><br>
-Отчество: <b>{author["middle"]}</b><br>
-Фамилия: <b>{author["surname"]}</b><br>
-телефон: <b>{author["phone"]}</b><br>
-email: <b>{author["email"]}</b><br>
-"""
-    return HttpResponse(result)
+#     result = f"""
+# Имя: <b>{author["name"]}</b><br>
+# Отчество: <b>{author["middle"]}</b><br>
+# Фамилия: <b>{author["surname"]}</b><br>
+# телефон: <b>{author["phone"]}</b><br>
+# email: <b>{author["email"]}</b><br>
+# <a href='/'> Home </a>
+# """
+#     return HttpResponse(result)
+    context = {
+        'author': author
+    }
+    return render(request, "about.html", context)
 
 
 def get_item(request, id):
@@ -53,11 +58,10 @@ def get_item(request, id):
             context = {
                 'item': item
             }
-            return render(request, "item-page.html", context)
-
-        
+            return render(request, "item-page.html", context)        
     return HttpResponseNotFound(f'Item with {id}=id not found')
     
+
 def items_list(request):
     # result = "<h2>список товаров</h2><ol>"
     # for item in items:
