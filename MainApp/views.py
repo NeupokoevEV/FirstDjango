@@ -21,21 +21,10 @@ def about(request):
         'phone': '8-123-456-67-89',
         'email': 'random_email@mail.ru'
         }
-
-    result = f"""
-        Имя: <b>{author["name"]}</b><br>
-        Отчество: <b>{author["middle"]}</b><br>
-        Фамилия: <b>{author["surname"]}</b><br>
-        телефон: <b>{author["phone"]}</b><br>
-        email: <b>{author["email"]}</b><br>
-        <a href='/'> Home </a>
-        """
-        # context = {
-    #     'author': author
-    # }
-    # return render(request, "about.html", context)
-    
-    return HttpResponse(result)
+    context = {
+        'author': author
+    }
+    return render(request, "about.html", context)
 
 
 
@@ -49,11 +38,7 @@ def get_item(request, id):
         
     context = {'item': item}       
     return render(request, "item-page.html", context)    
-    
-               
-    
-    
-    
+
 
 def items_list(request):
     
