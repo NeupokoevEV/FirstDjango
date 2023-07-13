@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Item Page</title>
-</head>
-<body>
-    <header>
-        / <a href="/">Home</a> / <a href="/items">Items</a>  / <a href="/about">About</a>
-    </header>
-    <h2> {{item.name}} </h2>    
-    <div> Количество: {{ item.count | default:"Товар отстутсвует на складе" }}</div>
+{% extends 'base.html' %}
 
-    <a href="/items">Назад</a>
-</body>
-</html>
+
+{% block content %}
+
+{# Подставляем содержимое файла inc-1.html #}
+{% include 'inc-menu.html' %}
+
+<h2> {{item.name}} </h2>
+<div> {{item.name}} </div>
+<div> Количество: {{ item.count | default:"Товар отстутсвует на складе" }}</div>
+<a href="/items">Назад</a>
+
+{% endblock %}
